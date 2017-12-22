@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+
+{% block title %}{% trans 'Ticket List' %}{% endblock %}
+
+{% block content %}
+{% if ticket_list %}
+    <a href="{% url 'tickettracker:create' %}">{% trans 'Create' %}</a>
+
+    <ul>
+    {% for t in ticket_list %}
+        <li><a href="{% url 'tickettracker:detail' t.id %}">{{ t }}</a></li>
+    {% endfor %}
+    </ul>
+
+    {% include 'tickettracker/includes/pagination.html' %}
+{% else %}
+    <p>{% trans 'No tickets found!' %}</p>
+{% endif %}
+{% endblock %}

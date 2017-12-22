@@ -1,0 +1,23 @@
+# django-ticketracker message file.
+# Copyright (C) 2017 Ihab Hussein
+# This file is distributed under the same license as the django-ticketracker
+# package.
+# Ihab Hussein <ihab@ihabhussein.com>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: django-ticketracker v0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-21 21:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tickettracker/models.py:12
+msgid "Subject"
+msgstr ""

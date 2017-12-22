@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+
+{% block title %}{% trans 'Create' %}{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'tickettracker:list' %}">"{% trans 'All' %}"</a>
+
+<p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="{% trans 'Create' %}">
+    </form>
+</p>
+
+{% endblock %}
