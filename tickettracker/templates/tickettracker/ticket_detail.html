@@ -4,11 +4,7 @@
 {% block title %}{{ object }}{% endblock %}
 
 {% block content %}
-
-<a href="{% url 'tickettracker:list' %}">"{% trans 'All' %}"</a>
-
 <p>
     {{ object }}
 </p>
-
 {% endblock %}

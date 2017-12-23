@@ -5,11 +5,22 @@
     <title>{% block title %}{% endblock %}</title>
     {% block extra_scripts %}{% endblock %}
     {% block extra_styles %}{% endblock %}
+    {% block styles %}{% endblock %}
+    {% block extrastyles %}{% endblock %}
+    {% block extrahead %}{% endblock %}
 </head>
 <body>
+    <nav>
+        <a href="/">List</a>
+        <a href="/create">Create</a>
+        <a href="#">Boards</a>
+    </nav>
     <div>
         {%block content %}{% endblock %}
     </div>
-    {% block end_scripts %}{% endblock %}
+    {% block layout %}{% endblock %}
+    {% block cdn_scripts %}{% endblock %}
+    {% block scripts %}{% endblock %}
+    {% block extrascripts %}{% endblock %}
 </body>
 </html>
