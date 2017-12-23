@@ -22,5 +22,10 @@ class TicketCreateView(CreateView):
     model = Ticket
     form_class = CreateTicketForm
 
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.created_by = self.request.user
+        return super().form_valid(form)
+
     def get_success_url(self):
         return reverse('tickettracker:detail', args=[self.object.pk])

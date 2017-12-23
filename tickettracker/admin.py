@@ -17,4 +17,11 @@ class MilestoneAdmin(admin.ModelAdmin):
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
+    list_display = ('id', 'created_at', 'created_by', 'subject', 'state',)
     ordering = ('-id',)
+    exclude = ('created_by',)
+
+    def save_model(self, request, obj, form, change):
+        if not obj.created_by:
+            obj.created_by = request.user
+        super().save_model(request, obj, form, change)

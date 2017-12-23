@@ -45,6 +45,12 @@ class Milestone(models.Model):
 
 
 class Ticket(models.Model):
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, models.PROTECT, verbose_name=_('Created by'),
+    )
+    created_at = models.DateTimeField(
+        _('Created at'), auto_now_add=True,
+    )
     subject = models.CharField(
         _('Subject'), max_length=100,
     )
@@ -64,7 +70,7 @@ class Ticket(models.Model):
         null=False, default='New',
     )
     other_ticket = models.ForeignKey(
-        'Ticket', models.PROTECT, null=True,
+        'Ticket', models.PROTECT, null=True, blank=True,
     )
 
     def __str__(self):
