@@ -11,9 +11,9 @@
 </head>
 <body>
     <nav>
-        <a href="/">List</a>
-        <a href="/create">Create</a>
-        <a href="#">Boards</a>
+        <a href="{% url 'tickettracker:list' %}">List</a>
+        <a href="{% url 'tickettracker:create' %}">Create</a>
+        <a href="{% url 'tickettracker:boards' %}">Boards</a>
     </nav>
     <div>
         {%block content %}{% endblock %}
