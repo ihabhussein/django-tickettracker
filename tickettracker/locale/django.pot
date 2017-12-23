@@ -1,15 +1,14 @@
-# django-ticketracker message file.
-# Copyright (C) 2017 Ihab Hussein
-# This file is distributed under the same license as the django-ticketracker
-# package.
-# Ihab Hussein <ihab@ihabhussein.com>, 2017.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: django-ticketracker v0.1\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-21 21:33+0000\n"
+"POT-Creation-Date: 2017-12-23 12:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +17,125 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: tickettracker/models.py:7
+msgid "New"
+msgstr ""
+
+#: tickettracker/models.py:8
+msgid "Open"
+msgstr ""
+
+#: tickettracker/models.py:9
+msgid "Blocked"
+msgstr ""
+
+#: tickettracker/models.py:10
+msgid "Merged"
+msgstr ""
+
+#: tickettracker/models.py:11
+msgid "Resolved"
+msgstr ""
+
 #: tickettracker/models.py:12
+msgid "Closed"
+msgstr ""
+
+#: tickettracker/models.py:16
+msgid "Trivial"
+msgstr ""
+
+#: tickettracker/models.py:17
+msgid "Minor"
+msgstr ""
+
+#: tickettracker/models.py:18
+msgid "Major"
+msgstr ""
+
+#: tickettracker/models.py:19
+msgid "Critical"
+msgstr ""
+
+#: tickettracker/models.py:20
+msgid "Blocker"
+msgstr ""
+
+#: tickettracker/models.py:25
+msgid "Name"
+msgstr ""
+
+#: tickettracker/models.py:31 tickettracker/models.py:52
+msgid "Product"
+msgstr ""
+
+#: tickettracker/models.py:32
+msgid "Products"
+msgstr ""
+
+#: tickettracker/models.py:36
+msgid "Label"
+msgstr ""
+
+#: tickettracker/models.py:37
+msgid "Due Date"
+msgstr ""
+
+#: tickettracker/models.py:43 tickettracker/models.py:59
+msgid "Milestone"
+msgstr ""
+
+#: tickettracker/models.py:44
+msgid "Milestones"
+msgstr ""
+
+#: tickettracker/models.py:49
 msgid "Subject"
+msgstr ""
+
+#: tickettracker/models.py:55
+msgid "Severity"
+msgstr ""
+
+#: tickettracker/models.py:63
+msgid "State"
+msgstr ""
+
+#: tickettracker/models.py:74
+msgid "Ticket"
+msgstr ""
+
+#: tickettracker/models.py:75
+msgid "Tickets"
+msgstr ""
+
+#: tickettracker/models.py:80
+msgid "Created by"
+msgstr ""
+
+#: tickettracker/models.py:83
+msgid "Created at"
+msgstr ""
+
+#: tickettracker/models.py:86
+msgid "Body"
+msgstr ""
+
+#: tickettracker/templates/tickettracker/ticket_detail.html:8
+#: tickettracker/templates/tickettracker/ticket_form.html:8
+msgid "All"
+msgstr ""
+
+#: tickettracker/templates/tickettracker/ticket_form.html:4
+#: tickettracker/templates/tickettracker/ticket_form.html:14
+#: tickettracker/templates/tickettracker/ticket_list.html:8
+msgid "Create"
+msgstr ""
+
+#: tickettracker/templates/tickettracker/ticket_list.html:4
+msgid "Ticket List"
+msgstr ""
+
+#: tickettracker/templates/tickettracker/ticket_list.html:18
+msgid "No tickets found!"
 msgstr ""

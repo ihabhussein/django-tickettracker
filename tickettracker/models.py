@@ -4,7 +4,12 @@ from django.utils.translation import gettext_lazy as _
 
 
 STATES = [
-    # ('', _('')),
+    ('New', _('New')),
+    ('Open', _('Open')),
+    ('Blocked', _('Blocked')),
+    ('Merged', _('Merged')),
+    ('Resolved', _('Resolved')),
+    ('Closed', _('Closed')),
 ]
 
 SEVERITY_LEVELS = [
@@ -29,6 +34,7 @@ class Product(models.Model):
 
 class Milestone(models.Model):
     label = models.CharField(_('Label'), max_length=50)
+    duedate = models.DateField(_('Due Date'), null=True, blank=True)
 
     def __str__(self):
         return self.label
@@ -36,17 +42,6 @@ class Milestone(models.Model):
     class Meta:
         verbose_name = _('Milestone')
         verbose_name_plural = _('Milestones')
-
-
-class Tag(models.Model):
-    label = models.CharField(_('Label'), max_length=50)
-
-    def __str__(self):
-        return self.label
-
-    class Meta:
-        verbose_name = _('Tag')
-        verbose_name_plural = _('Tags')
 
 
 class Ticket(models.Model):
@@ -64,9 +59,12 @@ class Ticket(models.Model):
         Milestone, models.SET_NULL, verbose_name=_('Milestone'),
         null=True, blank=True,
     )
-    tags = models.ManyToManyField(
-        Tag, verbose_name=_('Tags'),
-        null=True, blank=True,
+    state = models.CharField(
+        _('State'), max_length=16, choices=STATES,
+        null=False, default='New',
+    )
+    other_ticket = models.ForeignKey(
+        'Ticket', models.PROTECT, null=True,
     )
 
     def __str__(self):
@@ -85,12 +83,12 @@ class TicketLogEntry(models.Model):
         _('Created at'), auto_now_add=True,
     )
     body = models.CharField(
-        _('Body'), max_length=500,
+        _('Body'), max_length=1000,
     )
 
 
-class Attachement(models.Model):
-    ticket = models.ForeignKey(
-        TicketLogEntry, models.CASCADE,
-    )
-    # TODO
+# class Attachement(models.Model):
+#     ticket = models.ForeignKey(
+#         TicketLogEntry, models.CASCADE,
+#     )
+#     # TODO
