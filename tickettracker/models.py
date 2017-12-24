@@ -21,15 +21,15 @@ SEVERITY_LEVELS = [
 ]
 
 
-class Product(models.Model):
-    name = models.CharField(_('Name'), max_length=50)
+class Tag(models.Model):
+    label = models.CharField(_('Label'), max_length=50)
 
     def __str__(self):
-        return self.name
+        return self.label
 
     class Meta:
-        verbose_name = _('Product')
-        verbose_name_plural = _('Products')
+        verbose_name = _('Tag')
+        verbose_name_plural = _('Tags')
 
 
 class Milestone(models.Model):
@@ -54,8 +54,8 @@ class Ticket(models.Model):
     subject = models.CharField(
         _('Subject'), max_length=100,
     )
-    product = models.ForeignKey(
-        Product, models.CASCADE, verbose_name=_('Product'),
+    tags = models.ManyToManyField(
+        Tag, verbose_name=_('Tags'), null=True, blank=True,
     )
     severity = models.CharField(
         _('Severity'), max_length=16, choices=SEVERITY_LEVELS,

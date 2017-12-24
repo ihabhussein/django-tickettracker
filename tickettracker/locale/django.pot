@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-23 12:54+0000\n"
+"POT-Creation-Date: 2017-12-24 08:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,27 +61,23 @@ msgstr ""
 msgid "Blocker"
 msgstr ""
 
-#: tickettracker/models.py:25
-msgid "Name"
-msgstr ""
-
-#: tickettracker/models.py:31 tickettracker/models.py:52
-msgid "Product"
-msgstr ""
-
-#: tickettracker/models.py:32
-msgid "Products"
-msgstr ""
-
-#: tickettracker/models.py:36
+#: tickettracker/models.py:25 tickettracker/models.py:36
 msgid "Label"
+msgstr ""
+
+#: tickettracker/models.py:31
+msgid "Tag"
+msgstr ""
+
+#: tickettracker/models.py:32 tickettracker/models.py:58
+msgid "Tags"
 msgstr ""
 
 #: tickettracker/models.py:37
 msgid "Due Date"
 msgstr ""
 
-#: tickettracker/models.py:43 tickettracker/models.py:59
+#: tickettracker/models.py:43 tickettracker/models.py:65
 msgid "Milestone"
 msgstr ""
 
@@ -89,46 +85,44 @@ msgstr ""
 msgid "Milestones"
 msgstr ""
 
-#: tickettracker/models.py:49
-msgid "Subject"
-msgstr ""
-
-#: tickettracker/models.py:55
-msgid "Severity"
-msgstr ""
-
-#: tickettracker/models.py:63
-msgid "State"
-msgstr ""
-
-#: tickettracker/models.py:74
-msgid "Ticket"
-msgstr ""
-
-#: tickettracker/models.py:75
-msgid "Tickets"
-msgstr ""
-
-#: tickettracker/models.py:80
+#: tickettracker/models.py:49 tickettracker/models.py:86
 msgid "Created by"
 msgstr ""
 
-#: tickettracker/models.py:83
+#: tickettracker/models.py:52 tickettracker/models.py:89
 msgid "Created at"
 msgstr ""
 
-#: tickettracker/models.py:86
+#: tickettracker/models.py:55
+msgid "Subject"
+msgstr ""
+
+#: tickettracker/models.py:61
+msgid "Severity"
+msgstr ""
+
+#: tickettracker/models.py:69
+msgid "State"
+msgstr ""
+
+#: tickettracker/models.py:80
+msgid "Ticket"
+msgstr ""
+
+#: tickettracker/models.py:81
+msgid "Tickets"
+msgstr ""
+
+#: tickettracker/models.py:92
 msgid "Body"
 msgstr ""
 
-#: tickettracker/templates/tickettracker/ticket_detail.html:8
-#: tickettracker/templates/tickettracker/ticket_form.html:8
-msgid "All"
+#: tickettracker/templates/tickettracker/boards.html:4
+msgid "Boards"
 msgstr ""
 
 #: tickettracker/templates/tickettracker/ticket_form.html:4
-#: tickettracker/templates/tickettracker/ticket_form.html:14
-#: tickettracker/templates/tickettracker/ticket_list.html:8
+#: tickettracker/templates/tickettracker/ticket_form.html:11
 msgid "Create"
 msgstr ""
 
@@ -136,6 +130,6 @@ msgstr ""
 msgid "Ticket List"
 msgstr ""
 
-#: tickettracker/templates/tickettracker/ticket_list.html:18
-msgid "No tickets found!"
+#: tickettracker/templates/tickettracker/ticket_list.html:16
+msgid "No tickets found"
 msgstr ""
