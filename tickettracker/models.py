@@ -47,6 +47,7 @@ class Milestone(models.Model):
 class Ticket(models.Model):
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL, models.PROTECT, verbose_name=_('Created by'),
+        related_name='created_tickets',
     )
     created_at = models.DateTimeField(
         _('Created at'), auto_now_add=True,
@@ -55,7 +56,7 @@ class Ticket(models.Model):
         _('Subject'), max_length=100,
     )
     tags = models.ManyToManyField(
-        Tag, verbose_name=_('Tags'), null=True, blank=True,
+        Tag, verbose_name=_('Tags'), blank=True,
     )
     severity = models.CharField(
         _('Severity'), max_length=16, choices=SEVERITY_LEVELS,
@@ -71,10 +72,21 @@ class Ticket(models.Model):
     )
     other_ticket = models.ForeignKey(
         'Ticket', models.PROTECT, null=True, blank=True,
+        related_name='related',
+    )
+    assigned_to = models.ForeignKey(
+        settings.AUTH_USER_MODEL, models.PROTECT, verbose_name=_('Assigned to'),
+        related_name='assigned_tickets', null=True, blank=True,
     )
 
     def __str__(self):
         return '#{0}: {1}'.format(self.id, self.subject)
+
+    def blocked_tickets(self):
+        return self.related.filter(state='Blocked')
+
+    def merged_tickets(self):
+        return self.related.filter(state='Merged')
 
     class Meta:
         verbose_name = _('Ticket')
