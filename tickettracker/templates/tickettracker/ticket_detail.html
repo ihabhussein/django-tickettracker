@@ -19,9 +19,13 @@
     <script src="{% static 'tickettracker/shoelace/shoelace.js' %}"></script>
 {% endblock %}
 
-
 {% block content %}
 <p>
     {{ object }}
+</p>
+<p>
+    {% for entry in object.entries.all %}
+        {{ entry }}
+    {% endfor %}
 </p>
 {% endblock %}

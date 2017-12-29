@@ -94,6 +94,9 @@ class Ticket(models.Model):
 
 
 class TicketLogEntry(models.Model):
+    ticket = models.ForeignKey(
+        Ticket, models.CASCADE, verbose_name=_('Ticket'), related_name='entries'
+    )
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL, models.PROTECT, verbose_name=_('Created by'),
     )
