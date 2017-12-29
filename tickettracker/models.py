@@ -13,11 +13,11 @@ STATES = [
 ]
 
 SEVERITY_LEVELS = [
-    ('Trivial', _('Trivial')),
-    ('Minor', _('Minor')),
-    ('Major', _('Major')),
-    ('Critical', _('Critical')),
-    ('Blocker', _('Blocker')),
+    (1, _('Blocker')),
+    (2, _('Critical')),
+    (3, _('Major')),
+    (4, _('Minor')),
+    (5, _('Trivial')),
 ]
 
 
@@ -58,8 +58,8 @@ class Ticket(models.Model):
     tags = models.ManyToManyField(
         Tag, verbose_name=_('Tags'), blank=True,
     )
-    severity = models.CharField(
-        _('Severity'), max_length=16, choices=SEVERITY_LEVELS,
+    severity = models.IntegerField(
+        _('Severity'), choices=SEVERITY_LEVELS,
         null=True, blank=True,
     )
     milestone = models.ForeignKey(
