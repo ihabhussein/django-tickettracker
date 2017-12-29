@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
-    {% block extra_scripts %}{% endblock %}
-    {% block extra_styles %}{% endblock %}
+    {% block scripts %}{% endblock %}
     {% block styles %}{% endblock %}
+    {% block extrascripts %}{% endblock %}
     {% block extrastyles %}{% endblock %}
     {% block extrahead %}{% endblock %}
 </head>
@@ -15,12 +15,9 @@
         <a href="{% url 'tickettracker:create' %}">Create</a>
         <a href="{% url 'tickettracker:boards' %}">Boards</a>
     </nav>
-    <div>
+    <div class="container">
         {%block content %}{% endblock %}
     </div>
-    {% block layout %}{% endblock %}
-    {% block cdn_scripts %}{% endblock %}
-    {% block scripts %}{% endblock %}
-    {% block extrascripts %}{% endblock %}
+    {% block endscripts %}{% endblock %}
 </body>
 </html>

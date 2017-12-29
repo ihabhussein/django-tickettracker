@@ -3,26 +3,37 @@
 
 {% block title %}{% trans 'Boards' %}{% endblock %}
 
-{% block extrastyles %}
-    <link rel="stylesheet" href="{% static 'tickettracker/css/boards.css' %}">
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'tickettracker/shoelace/zepto.min.js' %}"></script>
 {% endblock %}
 
-{% block content %}
-    <div class="container">
-        {% for state in states %}
-            <div id="board-{{ state.0 }}" class="drop-target">
-                <h3>{{ state.1 }}</h3>
-                {% for ticket in tickets %}{% if ticket.state == state.0 %}
-                    <div id="issue-{{ ticket.id }}" class="draggable" draggable="true">
-                        <h4>{{ ticket.id }}</h4>
-                        <a href="{% url 'tickettracker:detail' ticket.id %}">{{ ticket.subject }}</a>
-                    </div>
-                {% endif %}{% endfor %}
-            </div>
-        {% endfor %}
-    </div>
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'tickettracker/main.css' %}">
+    <link rel="stylesheet" href="{% static 'tickettracker/shoelace/shoelace.css' %}">
 {% endblock %}
 
 {% block extrascripts %}
-    <script src="{% static 'tickettracker/js/boards.js' %}"></script>
+    {{ block.super }}
+    <script src="{% static 'tickettracker/shoelace/shoelace.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'tickettracker/boards/boards.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% for state in states %}
+        <div id="board-{{ state.0 }}" class="drop-target">
+            <h4>{{ state.1 }}</h4>
+            {% for ticket in tickets %}{% if ticket.state == state.0 %}
+                <div id="issue-{{ ticket.id }}" class="draggable" draggable="true">
+                    <h5>{{ ticket.id }}</h5>
+                    <a href="{% url 'tickettracker:detail' ticket.id %}">{{ ticket.subject }}</a>
+                </div>
+            {% endif %}{% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block endscripts %}
+    <script src="{% static 'tickettracker/boards/boards.js' %}"></script>
 {% endblock %}

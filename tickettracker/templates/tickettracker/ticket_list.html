@@ -3,16 +3,52 @@
 
 {% block title %}{% trans 'Ticket List' %}{% endblock %}
 
-{% block content %}
-    {% if ticket_list %}
-        <ul>
-        {% for t in ticket_list %}
-            <li><a href="{% url 'tickettracker:detail' t.id %}">{{ t }}</a></li>
-        {% endfor %}
-        </ul>
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'tickettracker/shoelace/zepto.min.js' %}"></script>
+{% endblock %}
 
-        {% include 'tickettracker/includes/pagination.html' %}
-    {% else %}
-        <p>{% trans 'No tickets found' %}</p>
-    {% endif %}
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'tickettracker/main.css' %}">
+    <link rel="stylesheet" href="{% static 'tickettracker/shoelace/shoelace.css' %}">
+{% endblock %}
+
+{% block extrascripts %}
+    {{ block.super }}
+    <script src="{% static 'tickettracker/shoelace/shoelace.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{% trans 'Subject' %}</th>
+                <th scope="col">{% trans 'Created at' %}</th>
+                <th scope="col">{% trans 'Severity' %}</th>
+                <th scope="col">{% trans 'Milestone' %}</th>
+                <th scope="col">{% trans 'Tags' %}</th>
+                <th scope="col">{% trans 'State' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if ticket_list %}
+                {% for t in ticket_list %}
+                    <tr>
+                        <td><a href="{% url 'tickettracker:detail' t.id %}">{{ t.id }}</a></td>
+                        <td><a href="{% url 'tickettracker:detail' t.id %}">{{ t.subject }}</a></td>
+                        <td>{{ t.created_at }}</td>
+                        <td>{{ t.severity|default:"&mdash;" }}</td>
+                        <td>{{ t.milestone|default:"&mdash;" }}</td>
+                        <td>{% for tag in t.tags.all %}{{ tag }}{% endfor %}</td>
+                        <td>{{ t.state }}{% if t.other_ticket %} (#{{ t.other_ticket.id }}){% endif %}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td colspan="">{% trans 'No tickets found' %}</td></tr>
+            {% endif %}
+        </tbody>
+    </table>
+    {% include 'tickettracker/includes/pagination.html' %}
 {% endblock %}

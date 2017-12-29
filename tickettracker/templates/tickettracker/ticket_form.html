@@ -3,12 +3,31 @@
 
 {% block title %}{% trans 'Create' %}{% endblock %}
 
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'tickettracker/shoelace/zepto.min.js' %}"></script>
+{% endblock %}
+
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'tickettracker/main.css' %}">
+    <link rel="stylesheet" href="{% static 'tickettracker/shoelace/shoelace.css' %}">
+{% endblock %}
+
+{% block extrascripts %}
+    {{ block.super }}
+    <script src="{% static 'tickettracker/shoelace/shoelace.js' %}"></script>
+{% endblock %}
+
+
 {% block content %}
 <p>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="{% trans 'Create' %}">
+        <table>
+        {{ form.as_table }}
+        </table>
+        <input type="submit" class="button" value="{% trans 'Create' %}">
     </form>
 </p>
 {% endblock %}
