@@ -1,3 +1,9 @@
 .pagination {
     text-align: center;
 }
+.created_by {
+    font-weight: bolder;
+}
+.created_at {
+    font-size: 83%;
+}
