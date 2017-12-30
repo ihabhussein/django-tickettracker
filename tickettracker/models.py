@@ -88,6 +88,12 @@ class Ticket(models.Model):
     def merged_tickets(self):
         return self.related.filter(state='Merged')
 
+    def update(self, **kwargs):
+        self.severity = kwargs.get('severity', self.severity)
+        self.milestone = kwargs.get('milestone', self.milestone)
+        self.state = kwargs.get('state', self.state)
+        self.save()
+
     class Meta:
         verbose_name = _('Ticket')
         verbose_name_plural = _('Tickets')

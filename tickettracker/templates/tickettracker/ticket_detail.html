@@ -20,6 +20,8 @@
 {% endblock %}
 
 {% block content %}
+<form method="POST">
+{% csrf_token %}
 <div class="row">
     <div class="col-9">
         <table class="table-bordered">
@@ -36,18 +38,11 @@
                 </tr><tr>
                     <th scope="row">{% trans 'Created at' %}</th>
                     <td>{{ object.created_at }}</td>
-                </tr><tr>
-                    <th scope="row">{% trans 'Severity' %}</th>
-                    <td>{{ object.severity|default:"&mdash;" }}</td>
-                </tr><tr>
-                    <th scope="row">{% trans 'Milestone' %}</th>
-                    <td>{{ object.milestone|default:"&mdash;" }}</td>
-                </tr><tr>
+                </tr>
+                    {{ form.as_table }}
+                <tr>
                     <th scope="row">{% trans 'Tags' %}</th>
                     <td>{% for tag in object.tags.all %}{{ tag }}{% endfor %}</td>
-                </tr><tr>
-                    <th scope="row">{% trans 'State' %}</th>
-                    <td>{{ object.state }}{% if object.other_ticket %} (#{{ object.other_ticket.id }}){% endif %}</td>
                 </tr>
         </table>
 
@@ -58,9 +53,14 @@
                 <blockquote>{{ entry.body }}</blockquote>
             </div>
         {% endfor %}
+
+        <h4>{% trans 'Add a comment' %}</h4>
+        {{ logentry_form.as_p }}
+        <input type="submit" class="button" value="{% trans 'Comment' %}">
     </div>
     <div class="col-3">
-        XXX
+        <input type="submit" class="button" value="{% trans 'Update Ticket' %}">
     </div>
 </div>
+</form>
 {% endblock %}

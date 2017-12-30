@@ -5,7 +5,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic import CreateView, UpdateView, TemplateView
 
 from .models import Ticket, STATES
-from .forms import CreateTicketForm
+from .forms import CreateTicketForm, TicketUpdateForm, LogEntryForm
 
 
 class IndexView(ListView):
@@ -16,6 +16,26 @@ class IndexView(ListView):
 
 class TicketView(DetailView):
     model = Ticket
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = TicketUpdateForm(instance=self.object)
+        context['logentry_form'] = LogEntryForm()
+        return context
+
+    def post(self, request, **kwargs):
+        object = Ticket.objects.get(pk=kwargs['pk'])
+
+        form = TicketUpdateForm(request.POST)
+        if form.is_valid():
+            object.update(**form.cleaned_data)
+
+        logentry_form = LogEntryForm(request.POST)
+        if logentry_form.is_valid():
+            print(logentry_form.cleaned_data)
+            object.entries.create(created_by=request.user, **logentry_form.cleaned_data)
+
+        return super().get(request)
 
 
 class TicketCreateView(CreateView):
