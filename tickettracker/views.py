@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic import CreateView, UpdateView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Ticket, STATES
 from .forms import CreateTicketForm, TicketUpdateForm, LogEntryForm
@@ -14,7 +15,7 @@ class IndexView(ListView):
     paginate_by = 10
 
 
-class TicketView(DetailView):
+class TicketView(LoginRequiredMixin, DetailView):
     model = Ticket
 
     def get_context_data(self, **kwargs):
@@ -38,7 +39,7 @@ class TicketView(DetailView):
         return super().get(request)
 
 
-class TicketCreateView(CreateView):
+class TicketCreateView(LoginRequiredMixin, CreateView):
     model = Ticket
     form_class = CreateTicketForm
 
@@ -51,7 +52,7 @@ class TicketCreateView(CreateView):
         return reverse('tickettracker:detail', args=[self.object.pk])
 
 
-class BoardsView(TemplateView):
+class BoardsView(LoginRequiredMixin, TemplateView):
     template_name = 'tickettracker/boards.html'
 
     def get_context_data(self, **kwargs):
